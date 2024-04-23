@@ -1,21 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
-const enum Mode {
-  DARK = 'dark',
-  LIGHT = 'light',
-}
-const initialState = {
-  mode: Mode.DARK,
-};
-const globalThemeSlice = createSlice({
-  name: 'Theme',
-  initialState,
-  reducers: {
-    setMode: (state) => {
-      state.mode = state.mode === Mode.DARK ? Mode.LIGHT : Mode.DARK;
-    },
+import { configureStore } from '@reduxjs/toolkit';
+import globalReducer from './globalTheme';
+
+const store = configureStore({
+  reducer: {
+    global: globalReducer,
   },
 });
 
-export const { setMode } = globalThemeSlice.actions;
+export default store;
 
-export default globalThemeSlice.reducer;
+// 从store本身推断出 RootState 和 AppDispatch 类型
+export type AppStore = typeof store;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispach = AppStore['dispatch'];
