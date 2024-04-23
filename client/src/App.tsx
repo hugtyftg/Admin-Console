@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { themeSettings } from './theme';
 import { RootState } from './store';
+import Layout from './pages/layout';
 
 function App() {
   const mode = useSelector((state: RootState) => state.global.mode);
@@ -13,6 +14,7 @@ function App() {
       <ThemeProvider theme={theme}>
         {/* 提供css样式 */}
         <CssBaseline />
+        <Layout />
       </ThemeProvider>
     </div>
   );
