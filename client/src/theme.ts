@@ -1,3 +1,5 @@
+import { Mode } from './types/theme';
+
 type ColorMapType = Record<string, string>;
 type TokensType = Record<string, ColorMapType>;
 // color design tokens export
@@ -62,10 +64,6 @@ function reverseTokens(tokensDark: TokensType) {
 export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-const enum Mode {
-  DARK = 'dark',
-  LIGHT = 'light',
-}
 export const themeSettings = (mode: Mode) => {
   return {
     palette: {
