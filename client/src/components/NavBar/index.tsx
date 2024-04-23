@@ -24,34 +24,32 @@ export default function Navbar() {
   const changeMode = () => dispatch(setMode());
 
   return (
-    <div className="navbar">
-      <AppBar>
-        <Toolbar css={S.toolbarCss}>
-          <S.SectionContainer>
+    <AppBar className="navbar">
+      <Toolbar css={S.toolbarCss}>
+        <S.LeftContainer>
+          <IconButton>
+            <MenuIcon />
+          </IconButton>
+          <S.InputWrapper backgroundColor={theme.palette.background.paper}>
+            <InputBase placeholder="Search..." />
             <IconButton>
-              <MenuIcon />
+              <Search />
             </IconButton>
-            <S.InputWrapper backgroundColor={theme.palette.background.paper}>
-              <InputBase placeholder="Search..." />
-              <IconButton>
-                <Search />
-              </IconButton>
-            </S.InputWrapper>
-          </S.SectionContainer>
-          <S.SectionContainer>
-            <IconButton onClick={changeMode}>
-              {theme.palette.mode === Mode.DARK ? (
-                <DarkModeOutlined />
-              ) : (
-                <LightModeOutlined />
-              )}
-            </IconButton>
-            <IconButton>
-              <SettingsOutlined />
-            </IconButton>
-          </S.SectionContainer>
-        </Toolbar>
-      </AppBar>
-    </div>
+          </S.InputWrapper>
+        </S.LeftContainer>
+        <S.RightContainer>
+          <IconButton onClick={changeMode}>
+            {theme.palette.mode === Mode.DARK ? (
+              <DarkModeOutlined />
+            ) : (
+              <LightModeOutlined />
+            )}
+          </IconButton>
+          <IconButton>
+            <SettingsOutlined />
+          </IconButton>
+        </S.RightContainer>
+      </Toolbar>
+    </AppBar>
   );
 }
