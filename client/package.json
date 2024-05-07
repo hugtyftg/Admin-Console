@@ -24,7 +24,9 @@
     "react-datepicker": "^6.9.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.1",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "tdesign-icons-react": "^0.3.2",
+    "tdesign-react": "^1.7.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.11.0",
