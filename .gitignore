@@ -1,3 +1,5 @@
 # misc
 .DS_Store
 note.md
+*.excalidraw
+.vscode

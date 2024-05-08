@@ -3,10 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export type GlobalStateType = {
   mode: Mode;
+  // 16位用户id
+  userId: string;
 };
 
 const initialState: GlobalStateType = {
   mode: Mode.DARK,
+  userId: '63701cc1f03239b7f700000e',
 };
 
 const globalThemeSlice = createSlice({
