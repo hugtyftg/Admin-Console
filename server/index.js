@@ -9,9 +9,11 @@ import clientRoutes from './routes/client.js';
 import generaRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sale.js';
+import { User } from './models/User.js';
+import { dataUser } from './data/index.js';
 
 /* configuration */
-dotenv.config();
+dotenv.config(); // 将.env敏感信息注入到环境中、能被process.env访问
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -35,6 +37,9 @@ mongoose
     app.listen(PORT, () => {
       console.log(`server is running at http://localhost:${PORT}`);
     });
+
+    /* 仅在初始时添加数据;User是一个collection */
+    // User.insertMany(dataUser);
   })
   .catch((error) => {
     console.log(error);
