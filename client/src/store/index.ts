@@ -1,11 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import globalReducer from './globalTheme';
+import { api } from './api';
+import { setupListeners } from '@reduxjs/toolkit/query';
 
 const store = configureStore({
   reducer: {
     global: globalReducer,
+    [api.reducerPath]: api.reducer,
   },
+  /* todo */
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
 });
+/* todo */
+setupListeners(store.dispatch);
 
 export default store;
 
