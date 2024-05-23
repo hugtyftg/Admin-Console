@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 const S = {
-  Sidebar: styled.div<{ theme: any; isSidebarOpen: boolean }>`
+  Sidebar: styled.div<{ theme: any }>`
     height: 100%;
-    display: ${(props) => (props.isSidebarOpen ? 'block' : 'none')};
+    display: grid;
+    column-gap: auto;
+    padding: 20px 0 30px 0;
     background-color: ${(props) => props.theme.palette.background.alt};
     color: ${(props) => props.theme.palette.secondary[200]};
     .t-menu-group__title {
@@ -35,13 +37,7 @@ const S = {
       font-size: 20px;
     }
   `,
-  UserWrapper: styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: pink;
-  `,
+
   navItemCss: (isActive: boolean, theme: any) => css`
     display: flex;
     align-items: center;

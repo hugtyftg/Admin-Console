@@ -1,11 +1,13 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { ChevronRightIcon } from 'tdesign-icons-react';
 import { Menu, Button } from 'tdesign-react';
 import navData, { NavGroup, NavItem, NavType } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useTheme } from '@mui/material';
+import { IconButton, useTheme } from '@mui/material';
 import S from './style';
 import Divider from '../Divider';
+import UserInfo from '../UserInfo';
+import { SettingsOutlined } from '@mui/icons-material';
 
 type SidebarPropType = {
   user: User;
@@ -15,6 +17,7 @@ type SidebarPropType = {
 };
 
 export default function Sidebar({
+  user,
   isNonMobile,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -72,8 +75,8 @@ export default function Sidebar({
   );
   return (
     <>
-      {!isNonMobile && (
-        <S.Sidebar theme={theme} isSidebarOpen={isSidebarOpen}>
+      {!isNonMobile && isSidebarOpen && (
+        <S.Sidebar theme={theme}>
           <S.SidebarTitle>
             <h3>ECOMVISION</h3>
             <Button
@@ -95,7 +98,21 @@ export default function Sidebar({
               return renderNavItem(datum);
             })}
           </Menu>
-          <Divider color="white" padding={10} height={1} borderRadius={10} />
+          <Divider
+            color="lightgray"
+            padding={10}
+            height={1}
+            borderRadius={10}
+          />
+          <UserInfo
+            user={user}
+            showIcon={true}
+            icon={
+              <IconButton>
+                <SettingsOutlined />
+              </IconButton>
+            }
+          />
         </S.Sidebar>
       )}
     </>
