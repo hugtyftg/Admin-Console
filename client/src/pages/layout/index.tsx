@@ -18,12 +18,13 @@ export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
 
   const userId: string = useSelector((state: RootState) => state.global.userId);
-  const { data } = useGetUserQuery(userId);
+  const { data } = useGetUserQuery<{ data: User }>(userId);
   console.log(data);
 
   return (
     <S.LayoutContainer className="layout">
       <Sidebar
+        user={data}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
         isNonMobile={isNonMobile}
@@ -31,6 +32,7 @@ export default function Layout() {
       <S.MainContainer>
         <S.NavContainer>
           <Navbar
+            user={data}
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
           />

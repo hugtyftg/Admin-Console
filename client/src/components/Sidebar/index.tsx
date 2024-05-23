@@ -5,8 +5,10 @@ import navData, { NavGroup, NavItem, NavType } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material';
 import S from './style';
+import Divider from '../Divider';
 
 type SidebarPropType = {
+  user: User;
   isNonMobile: boolean;
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
@@ -71,8 +73,8 @@ export default function Sidebar({
   return (
     <>
       {!isNonMobile && (
-        <S.SideNav theme={theme} isSidebarOpen={isSidebarOpen}>
-          <S.SideNavTitle>
+        <S.Sidebar theme={theme} isSidebarOpen={isSidebarOpen}>
+          <S.SidebarTitle>
             <h3>ECOMVISION</h3>
             <Button
               shape="circle"
@@ -80,7 +82,7 @@ export default function Sidebar({
               icon={<ChevronRightIcon />}
               onClick={collapseSidebar}
             />
-          </S.SideNavTitle>
+          </S.SidebarTitle>
           <Menu>
             {navData.map((datum: NavItem | NavGroup) => {
               if (datum.type === NavType.GROUP) {
@@ -93,7 +95,8 @@ export default function Sidebar({
               return renderNavItem(datum);
             })}
           </Menu>
-        </S.SideNav>
+          <Divider color="white" padding={10} height={1} borderRadius={10} />
+        </S.Sidebar>
       )}
     </>
   );

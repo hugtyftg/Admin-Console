@@ -16,6 +16,7 @@ import {
 type NavbarPropType = {
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  user: User;
 };
 export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarPropType) {
   const theme = useTheme();
