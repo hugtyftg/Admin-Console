@@ -10,6 +10,7 @@ const S = {
     display: flex;
     flex-direction: column;
     width: 100%;
+    overflow: scroll;
   `,
   NavContainer: styled.div`
     padding: 0.5rem;

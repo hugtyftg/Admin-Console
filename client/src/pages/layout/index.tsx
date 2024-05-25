@@ -19,7 +19,6 @@ export default function Layout() {
 
   const userId: string = useSelector((state: RootState) => state.global.userId);
   const { data } = useGetUserQuery<{ data: User }>(userId);
-  console.log(data);
 
   return (
     <S.LayoutContainer className="layout">

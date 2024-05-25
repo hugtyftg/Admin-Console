@@ -12,7 +12,7 @@ export const api = createApi({
     baseUrl: config.baseURL,
   }),
   // API slice 对象中的根 tagTypes 字段，声明数据类型的字符串标签名称数组，例如 'Post'
-  tagTypes: ['User'],
+  tagTypes: ['User', 'Products'],
   // endpoints代表对该服务器的操作和请求
   endpoints: (builder) => ({
     // getUser endpoint 请求数据
@@ -21,8 +21,13 @@ export const api = createApi({
       // 查询请求接口中的 “providesTags” 数组，列出了一组描述该查询中数据的标签
       providesTags: ['User'],
     }),
+    // 请求所有product及其stat数据
+    getProducts: builder.query({
+      query: () => 'client/products',
+      providesTags: ['Products'],
+    }),
   }),
 });
 
 // 为 `getPosts` Query endpoint 导出自动生成的 hooks
-export const { useGetUserQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery } = api;
