@@ -1,5 +1,6 @@
 import { Product } from '../models/Product.js';
 import { ProductStat } from '../models/ProductStat.js';
+import { User } from '../models/User.js';
 
 // 获取所有商品的基本信息以及状态，整合到一起
 export const getProducts = async (req, res) => {
@@ -24,6 +25,20 @@ export const getProducts = async (req, res) => {
     res.status(200).json({
       productsWithStat,
     });
+  } catch (error) {
+    res.status(404).json({
+      code: -1,
+      message: error.message,
+    });
+  }
+};
+
+// 获取所有用户列表
+export const getCustomers = async (req, res) => {
+  try {
+    // select('-password')部分是用于指定查询结果中需要排除的字段。在这里，它指示排除密码字段，即不包含密码在返回的结果中。
+    const customers = await User.find({ role: 'user' }).select('-password');
+    res.status(200).json(customers);
   } catch (error) {
     res.status(404).json({
       code: -1,
