@@ -10,7 +10,9 @@ import generaRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sale.js';
 import { User } from './models/User.js';
-import { dataUser } from './data/index.js';
+import { Product } from './models/Product.js';
+import { ProductStat } from './models/ProductStat.js';
+import { dataUser, dataProduct, dataProductStat } from './data/index.js';
 
 /* configuration */
 dotenv.config(); // 将.env敏感信息注入到环境中、能被process.env访问
@@ -39,6 +41,8 @@ mongoose
     });
 
     /* 仅在初始时添加数据;User是一个collection */
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
     // User.insertMany(dataUser);
   })
   .catch((error) => {

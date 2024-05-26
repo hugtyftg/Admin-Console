@@ -2,7 +2,25 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 const S = {
-  SideNavTitle: styled.div`
+  Sidebar: styled.div<{ theme: any }>`
+    height: 100%;
+    display: grid;
+    column-gap: auto;
+    padding: 20px 0 30px 0;
+    background-color: ${(props) => props.theme.palette.background.alt};
+    color: ${(props) => props.theme.palette.secondary[200]};
+    .t-menu-group__title {
+      height: 2rem;
+      margin: 0.5rem 0;
+      line-height: 2rem;
+      font-weight: bold;
+    }
+    .t-default-menu .t-menu__item {
+      padding: 0 10px 0 20px;
+      height: 2rem;
+    }
+  `,
+  SidebarTitle: styled.div`
     position: relative;
     display: flex;
     align-items: center;
@@ -19,22 +37,7 @@ const S = {
       font-size: 20px;
     }
   `,
-  SideNav: styled.div<{ theme: any; isSidebarOpen: boolean }>`
-    display: ${(props) => (props.isSidebarOpen ? 'block' : 'none')};
-    height: 100%;
-    background-color: ${(props) => props.theme.palette.background.alt};
-    color: ${(props) => props.theme.palette.secondary[200]};
-    .t-menu-group__title {
-      height: 2rem;
-      margin: 0.5rem 0;
-      line-height: 2rem;
-      font-weight: bold;
-    }
-    .t-default-menu .t-menu__item {
-      padding: 0 10px 0 20px;
-      height: 2rem;
-    }
-  `,
+
   navItemCss: (isActive: boolean, theme: any) => css`
     display: flex;
     align-items: center;

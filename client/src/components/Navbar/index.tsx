@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import S from './style';
 import { IconButton, InputBase, useTheme } from '@mui/material';
 import { AppDispatch } from '@/store';
@@ -12,12 +12,18 @@ import {
   Search,
   SettingsOutlined,
 } from '@mui/icons-material';
+import DropList from './components/DropList';
 
 type NavbarPropType = {
   isSidebarOpen: boolean;
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
+  user: User;
 };
-export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarPropType) {
+export function Navbar({
+  isSidebarOpen,
+  setIsSidebarOpen,
+  user,
+}: NavbarPropType) {
   const theme = useTheme();
   const dispatch: AppDispatch = useDispatch();
   const changeMode = () => dispatch(setMode());
@@ -46,6 +52,7 @@ export function Navbar({ isSidebarOpen, setIsSidebarOpen }: NavbarPropType) {
         <IconButton>
           <SettingsOutlined />
         </IconButton>
+        <DropList user={user} />
       </S.RightContainer>
     </S.Container>
   );
