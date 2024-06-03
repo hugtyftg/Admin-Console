@@ -19,6 +19,16 @@ const S = {
       padding: 0 10px 0 20px;
       height: 2rem;
     }
+    .t-default-menu {
+      background-color: transparent;
+    }
+    .t-default-menu__inner .t-menu-group__title {
+      padding: 0;
+      color: ${(props) => props.theme.palette.secondary[200]};
+    }
+    .t-default-menu .t-menu__item.t-is-active:not(.t-is-opened) .t-icon {
+      color: ${(props) => props.theme.palette.primary[600]};
+    }
   `,
   SidebarTitle: styled.div`
     position: relative;

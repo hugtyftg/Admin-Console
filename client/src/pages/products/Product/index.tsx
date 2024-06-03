@@ -17,27 +17,32 @@ export function Product({
   const { Title, Text, Paragraph } = Typography;
 
   return (
-    <Card hoverShadow={true} bordered={true} css={S.cardCss(theme)}>
+    <Card hoverShadow={true} bordered={false} css={S.cardCss(theme)}>
       <Text
         style={{
-          color: (theme.palette.secondary as any)[200],
+          color: (theme.palette.secondary as any)[700],
         }}
       >
         {category}
       </Text>
-      <Title level="h5">{name}</Title>
+      <Title level="h5" style={{}}>
+        {name}
+      </Title>
       <Paragraph>${Number(price?.toFixed(2))}</Paragraph>
       <Rating
         style={{
           margin: '0.5rem 0',
+          color: (theme.palette.secondary as any)[400],
         }}
         value={rating}
         readOnly
       />
       <Paragraph>{description}</Paragraph>
       <Collapse
+        borderless
         style={{
           marginTop: '0.5rem',
+          color: ((theme.palette as unknown as any).neutral as any)[300],
         }}
       >
         <Collapse.Panel expandIcon={false} header={'see more'}>

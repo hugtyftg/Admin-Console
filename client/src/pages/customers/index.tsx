@@ -1,26 +1,56 @@
 import { useGetCustomersQuery } from '@/store/api';
+import { copyToClipboard } from '@/utils';
 import { useEffect, useState } from 'react';
+import { FileCopyIcon } from 'tdesign-icons-react';
 import { BaseTableCol, Table } from 'tdesign-react';
+import { S } from './style';
+import { useTheme } from '@mui/material';
 
 export default function Customers() {
   const { data, isLoading } = useGetCustomersQuery('');
   const [total, setTotal] = useState(0);
   console.log(data, isLoading);
+  const theme = useTheme();
 
   const columns: Array<BaseTableCol> = [
     {
       title: 'ID',
       colKey: '_id',
-      width: 200,
+      width: 260,
+      fixed: 'left',
     },
     {
       title: 'Name',
       colKey: 'name',
+      width: 100,
     },
     {
       title: 'Email',
       colKey: 'email',
-      width: 200,
+      width: 220,
+      ellipsis: {
+        props: {
+          theme: 'light',
+          placement: 'top',
+        },
+        content: ({ row }) => (
+          <div
+            style={{
+              padding: 5,
+              textAlign: 'center',
+            }}
+          >
+            {row.email}
+            <FileCopyIcon
+              style={{
+                cursor: 'pointer',
+                marginLeft: 5,
+              }}
+              onClick={() => copyToClipboard(row.email)}
+            />
+          </div>
+        ),
+      },
     },
     {
       title: 'Phone Number',
@@ -40,6 +70,7 @@ export default function Customers() {
     {
       title: 'Role',
       colKey: 'role',
+      fixed: 'right',
     },
   ];
   useEffect(() => {
@@ -47,7 +78,7 @@ export default function Customers() {
   }, [isLoading, data]);
 
   return (
-    <div>
+    <S.Container theme={theme}>
       <h1>Customers</h1>
       {!isLoading && (
         <Table
@@ -59,15 +90,16 @@ export default function Customers() {
           hover={true}
           resizable={true}
           cellEmptyContent={'-'}
+          tableLayout="fixed"
           pagination={{
             defaultCurrent: 1,
-            defaultPageSize: 5,
+            defaultPageSize: 10,
             total,
             showJumper: true,
             showPageSize: true,
           }}
         />
       )}
-    </div>
+    </S.Container>
   );
 }
