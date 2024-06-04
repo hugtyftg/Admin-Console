@@ -5,6 +5,7 @@ import { IProduct } from '@/types/IProduct';
 import { Product } from './Product';
 import { useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
+import { Loading } from 'tdesign-react';
 
 // type ProductsPropsType = {};
 export default function Products() {
@@ -19,12 +20,22 @@ export default function Products() {
       <S.HeaderWrapper>
         <Header title="PRODUCT" subTitle="see your list of products ~" />
       </S.HeaderWrapper>
-      <S.Content isNonMobile={isNonMobile}>
-        {!isLoading &&
-          data.productsWithStat.map((datum: IProduct) => (
+      {!isLoading && data ? (
+        <S.Content isNonMobile={isNonMobile}>
+          {data.productsWithStat.map((datum: IProduct) => (
             <Product key={datum._id} {...datum} />
           ))}
-      </S.Content>
+        </S.Content>
+      ) : (
+        <Loading
+          text="Loading..."
+          indicator
+          loading
+          preventScrollThrough
+          showOverlay
+          size="large"
+        />
+      )}
     </S.Container>
   );
 }
