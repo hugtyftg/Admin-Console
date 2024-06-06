@@ -16,6 +16,7 @@ export const S = {
     .t-table td {
       background: ${(props) => props.theme.palette.background.alt};
       color: ${(props) => props.theme.palette.secondary[100]} !important;
+      white-space: nowrap;
     }
     .t-input__inner,
     .t-pagination .t-input-adornment__append {

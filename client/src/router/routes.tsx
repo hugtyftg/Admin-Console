@@ -3,11 +3,13 @@ import Dashboard from '@/pages/dashboard';
 import { Navigate } from 'react-router-dom';
 import Products from '@/pages/products';
 import Customers from '@/pages/customers';
+import Transactions from '@/pages/transactions';
 
 enum RoutePath {
   DASHBOARD = '/dashboard',
   PRODUCTS = '/products',
   CUSTOMERS = '/customers',
+  TRANSACTIONS = '/transactions',
   ROOT = '/',
 }
 
@@ -29,6 +31,10 @@ const routes: RouteConfig[] = [
   {
     path: RoutePath.CUSTOMERS,
     element: <Customers />,
+  },
+  {
+    path: RoutePath.TRANSACTIONS,
+    element: <Transactions />,
   },
   {
     path: RoutePath.ROOT,

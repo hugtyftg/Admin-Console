@@ -11,7 +11,7 @@ export const S = {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     > div {
-      grid-column: ${(props) => (props.isNonMobile ? undefined : '1 / 4')};
+      grid-column: ${(props) => (props.isNonMobile ? undefined : '1 / span4')};
     }
     grid-row-gap: 20px;
     grid-column-gap: 1.33%;

@@ -55,21 +55,25 @@ export default function Customers() {
     {
       title: 'Phone Number',
       colKey: 'phoneNumber',
+      width: 160,
       cell: ({ row }) =>
         row.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1)$2-$3'),
     },
     {
       title: 'Country',
       colKey: 'country',
+      width: 80,
     },
     {
       title: 'Occupation',
       colKey: 'occupation',
+      width: 250,
       ellipsis: true,
     },
     {
       title: 'Role',
       colKey: 'role',
+      width: 80,
       fixed: 'right',
     },
   ];
