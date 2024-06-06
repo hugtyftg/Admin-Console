@@ -2,12 +2,12 @@ import mongoose from 'mongoose';
 
 const TransactionSchema = mongoose.Schema(
   {
-    name: String,
-    price: Number,
-    description: String,
-    category: String,
-    rating: Number,
-    supply: Number,
+    userId: String,
+    cost: String,
+    products: {
+      type: [mongoose.Types.ObjectId],
+      of: Number,
+    },
   },
   {
     timestamps: true,

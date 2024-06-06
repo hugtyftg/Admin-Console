@@ -9,7 +9,6 @@ import { useTheme } from '@mui/material';
 export default function Customers() {
   const { data, isLoading } = useGetCustomersQuery('');
   const [total, setTotal] = useState(0);
-  console.log(data, isLoading);
   const theme = useTheme();
 
   const columns: Array<BaseTableCol> = [
@@ -83,7 +82,7 @@ export default function Customers() {
 
   return (
     <S.Container theme={theme}>
-      <h1>Customers</h1>
+      <S.Title>Customers</S.Title>
       {!isLoading && (
         <Table
           columns={columns}

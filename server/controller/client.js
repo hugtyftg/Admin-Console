@@ -50,14 +50,14 @@ export const getCustomers = async (req, res) => {
 
 export const getTransactions = async (req, res) => {
   try {
-    // sort格式：{"field": "userId", "sort": "desc"}
+    // sort string format: {"field": "userId", "sort": "asc"}
     const { page = 1, pageSize = 20, sort = null, search = '' } = req.query;
-
     const generateSort = () => {
       const sortParsed = JSON.parse(sort);
       const sortFormatted = {
-        [sortParsed.field]: (sortParsed.sort = 'asc' ? 1 : -1),
+        [sortParsed.field]: sortParsed.sort === 'asc' ? 1 : -1,
       };
+      return sortFormatted;
     };
     const sortFormatted = !!sort ? generateSort() : {};
 
@@ -75,6 +75,21 @@ export const getTransactions = async (req, res) => {
     });
     res.status(200).json({
       transactions,
+      total,
+    });
+  } catch (error) {
+    res.status(404).json({
+      code: -1,
+      message: error.message,
+    });
+  }
+};
+
+export const transactionTotalNum = async (req, res) => {
+  try {
+    // 从数据库中查出transactions的总数
+    const total = await Transaction.countDocuments();
+    res.status(200).json({
       total,
     });
   } catch (error) {

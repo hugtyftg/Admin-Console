@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const S = {
   Container: styled.div<{ theme: any }>`
+    padding: 0 12px;
     .customers {
       color: red;
     }
@@ -22,5 +23,8 @@ export const S = {
     .t-pagination .t-input-adornment__append {
       color: ${(props) => props.theme.palette.secondary[100]} !important;
     }
+  `,
+  Title: styled.h1`
+    margin-bottom: 10px;
   `,
 };
