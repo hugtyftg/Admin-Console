@@ -16,12 +16,15 @@ export const S = {
     .t-table th,
     .t-table td {
       background: ${(props) => props.theme.palette.background.alt};
-      color: ${(props) => props.theme.palette.secondary[100]} !important;
+      color: ${(props) => props.theme.palette.secondary[100]};
       white-space: nowrap;
     }
     .t-input__inner,
     .t-pagination .t-input-adornment__append {
-      color: ${(props) => props.theme.palette.secondary[100]} !important;
+      color: ${(props) => props.theme.palette.secondary[100]};
+    }
+    .t-table__empty {
+      color: ${(props) => props.theme.palette.secondary[100]};
     }
   `,
   Title: styled.h1`
