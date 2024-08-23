@@ -19,6 +19,7 @@ export const api = createApi({
     'Transactions',
     'TransactionsTotal',
     'Geography',
+    'Sales',
   ],
   // endpoints代表对该服务器的操作和请求
   endpoints: (builder) => ({
@@ -56,6 +57,11 @@ export const api = createApi({
       query: () => 'client/geography',
       providesTags: ['Geography'],
     }),
+    // 销量趋势数据
+    getSales: builder.query({
+      query: () => 'sales/sales',
+      providesTags: ['Sales'],
+    }),
   }),
 });
 
@@ -67,4 +73,5 @@ export const {
   useGetTransactionsQuery,
   useGetTransactionsTotalNumQuery,
   useGetGeographyQuery,
+  useGetSalesQuery,
 } = api;
