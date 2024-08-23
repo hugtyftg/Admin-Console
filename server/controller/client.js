@@ -2,6 +2,7 @@ import { Product } from '../models/Product.js';
 import { ProductStat } from '../models/ProductStat.js';
 import { Transaction } from '../models/Transaction.js';
 import { User } from '../models/User.js';
+import getCountryIso3 from 'country-iso-2-to-3';
 
 // 获取所有商品的基本信息以及状态，整合到一起
 export const getProducts = async (req, res) => {
@@ -92,6 +93,36 @@ export const transactionTotalNum = async (req, res) => {
     res.status(200).json({
       total,
     });
+  } catch (error) {
+    res.status(404).json({
+      code: -1,
+      message: error.message,
+    });
+  }
+};
+
+// 获取所有用户的地理位置并且分类map
+export const getGeography = async (req, res) => {
+  try {
+    const users = await User.find();
+    console.log(users);
+    const mappedLocations = users.reduce((acc, { country }) => {
+      const countryIso3 = getCountryIso3(country);
+      const index = acc.findIndex((item) => {
+        return item.id === countryIso3;
+      });
+      if (index === -1) {
+        acc.push({
+          id: countryIso3,
+          value: 1,
+        });
+      } else {
+        acc[index].value = acc[index].value + 1;
+      }
+      return acc;
+    }, []);
+    console.log(mappedLocations);
+    res.status(200).json(mappedLocations);
   } catch (error) {
     res.status(404).json({
       code: -1,
