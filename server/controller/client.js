@@ -105,7 +105,6 @@ export const transactionTotalNum = async (req, res) => {
 export const getGeography = async (req, res) => {
   try {
     const users = await User.find();
-    console.log(users);
     const mappedLocations = users.reduce((acc, { country }) => {
       const countryIso3 = getCountryIso3(country);
       const index = acc.findIndex((item) => {
@@ -121,7 +120,6 @@ export const getGeography = async (req, res) => {
       }
       return acc;
     }, []);
-    console.log(mappedLocations);
     res.status(200).json(mappedLocations);
   } catch (error) {
     res.status(404).json({
