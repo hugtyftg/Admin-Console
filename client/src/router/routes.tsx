@@ -5,6 +5,7 @@ import Products from '@/pages/products';
 import Customers from '@/pages/customers';
 import Transactions from '@/pages/transactions';
 import Geography from '@/pages/geography';
+import Overview from '@/pages/overview';
 
 enum RoutePath {
   DASHBOARD = '/dashboard',
@@ -12,6 +13,7 @@ enum RoutePath {
   CUSTOMERS = '/customers',
   TRANSACTIONS = '/transactions',
   GEOGRAPHY = '/geography',
+  OVERVIEW = '/overview',
   ROOT = '/',
 }
 
@@ -41,6 +43,10 @@ const routes: RouteConfig[] = [
   {
     path: RoutePath.GEOGRAPHY,
     element: <Geography />,
+  },
+  {
+    path: RoutePath.OVERVIEW,
+    element: <Overview />,
   },
   {
     path: RoutePath.ROOT,
