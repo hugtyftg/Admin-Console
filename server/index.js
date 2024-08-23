@@ -13,11 +13,13 @@ import { User } from './models/User.js';
 import { Product } from './models/Product.js';
 import { ProductStat } from './models/ProductStat.js';
 import { Transaction } from './models/Transaction.js';
+import { OverallStat } from './models/OverallStat.js';
 import {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from './data/index.js';
 
 /* configuration */
@@ -47,6 +49,7 @@ mongoose
     });
 
     /* 仅在初始时添加数据;User是一个collection */
+    // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // User.insertMany(dataUser);
