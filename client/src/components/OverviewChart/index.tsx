@@ -93,7 +93,7 @@ export default function OverviewChart({
               },
             },
           }}
-          margin={{ top: 20, right: 50, bottom: 50, left: 70 }}
+          margin={{ top: 20, right: 50, bottom: 50, left: 80 }}
           xScale={{ type: 'point' }}
           yScale={{
             type: 'linear',
