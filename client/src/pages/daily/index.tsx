@@ -33,7 +33,7 @@ export default function Daily() {
   return (
     <S.Container theme={theme}>
       <S.Title>DAILY</S.Title>
-      <S.SubTitle>Chart of daily sales</S.SubTitle>
+      <S.SubTitle>Chart of daily sales and units</S.SubTitle>
       <DateRangePicker
         value={range}
         onChange={changeRange}

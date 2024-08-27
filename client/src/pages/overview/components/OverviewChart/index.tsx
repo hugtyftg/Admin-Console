@@ -140,11 +140,11 @@ function OverviewChart({ isDashboard = false, view }: OverviewChartProps) {
             !isDashboard
               ? [
                   {
-                    anchor: 'bottom-right',
+                    anchor: 'top-right',
                     direction: 'column',
                     justify: false,
-                    translateX: 30,
-                    translateY: -40,
+                    translateX: 10,
+                    translateY: 30,
                     itemsSpacing: 0,
                     itemDirection: 'left-to-right',
                     itemWidth: 80,

@@ -3,14 +3,11 @@ import { S } from './style';
 import { ResponsiveLine } from '@nivo/line';
 import React, { useMemo } from 'react';
 
-type DailyChartProps = {
+type MonthlyChartProps = {
   data: any;
-  startDate: string;
-  endDate: string;
 };
-
 // eslint-disable-next-line react-refresh/only-export-components
-function DailyChart({ data, startDate, endDate }: DailyChartProps) {
+function MonthlyChart({ data }: MonthlyChartProps) {
   const theme = useTheme();
 
   // 日期范围内的数据
@@ -18,7 +15,7 @@ function DailyChart({ data, startDate, endDate }: DailyChartProps) {
     if (!data) {
       return [];
     }
-    const dailyData = data.dailyData;
+    const monthlyData = data.monthlyData;
     const res = ['totalSales', 'totalUnits'].map(
       (field: string, index: number) => ({
         id: field,
@@ -26,25 +23,20 @@ function DailyChart({ data, startDate, endDate }: DailyChartProps) {
         data: [],
       })
     );
-    const startDateObj = new Date(startDate);
-    const endDateObj = new Date(endDate);
-    for (let i = 0; i < dailyData.length; i++) {
-      const curDate = dailyData[i];
-      const beforeStart = new Date(curDate.date) < startDateObj;
-      const afterEnd = new Date(curDate.date) > endDateObj;
-      if (!beforeStart && !afterEnd) {
-        (res[0].data as any).push({
-          x: curDate.date,
-          y: curDate.totalSales,
-        });
-        (res[1].data as any).push({
-          x: curDate.date,
-          y: curDate.totalUnits,
-        });
-      }
+    for (let i = 0; i < monthlyData.length; i++) {
+      const curMonth = monthlyData[i];
+      (res[0].data as any).push({
+        x: curMonth.month,
+        y: curMonth.totalSales,
+      });
+      (res[1].data as any).push({
+        x: curMonth.month,
+        y: curMonth.totalUnits,
+      });
     }
     return res;
-  }, [data, startDate, endDate]);
+  }, [data]);
+  console.log(data, total);
 
   return (
     <S.Container theme={theme}>
@@ -98,7 +90,7 @@ function DailyChart({ data, startDate, endDate }: DailyChartProps) {
         axisTop={null}
         axisRight={null}
         axisBottom={{
-          format: (v) => v.slice(5, 10),
+          format: (v) => v,
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
@@ -154,4 +146,4 @@ function DailyChart({ data, startDate, endDate }: DailyChartProps) {
   );
 }
 // eslint-disable-next-line react-refresh/only-export-components
-export default React.memo(DailyChart);
+export default React.memo(MonthlyChart);

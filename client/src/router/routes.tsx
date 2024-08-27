@@ -9,6 +9,7 @@ enum RoutePath {
   GEOGRAPHY = '/geography',
   OVERVIEW = '/overview',
   DAILY = '/daily',
+  MONTHLY = '/monthly',
   ROOT = '/',
 }
 
@@ -55,6 +56,10 @@ const routes: RouteConfig[] = [
   {
     path: RoutePath.DAILY,
     element: lazyLoad('../pages/Daily'),
+  },
+  {
+    path: RoutePath.MONTHLY,
+    element: lazyLoad('../pages/Monthly'),
   },
   {
     path: RoutePath.ROOT,
