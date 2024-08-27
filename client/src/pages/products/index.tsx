@@ -1,4 +1,4 @@
-import { Header } from '@/components/Header';
+import { Header } from '@/layout/Header';
 import { useGetProductsQuery } from '@/store/api';
 import { S } from './style';
 import { IProduct } from '@/types/IProduct';
