@@ -5,8 +5,7 @@ import navData, { NavGroup, NavItem, NavType } from './data';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { IconButton, useTheme } from '@mui/material';
 import S from './style';
-import Divider from '@/components/Divider';
-import UserInfo from '@/components/UserInfo';
+import { Divider, UserInfo } from '@/components';
 import { SettingsOutlined } from '@mui/icons-material';
 
 type SidebarPropType = {
