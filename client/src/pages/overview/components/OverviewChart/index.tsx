@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material';
 import { S } from './style';
 import { Loading } from 'tdesign-react';
 import { ResponsiveLine } from '@nivo/line';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { VIEW } from './types';
 
 type OverviewChartProps = {
@@ -11,10 +11,8 @@ type OverviewChartProps = {
   view: VIEW;
 };
 
-export default function OverviewChart({
-  isDashboard = false,
-  view,
-}: OverviewChartProps) {
+// eslint-disable-next-line react-refresh/only-export-components
+function OverviewChart({ isDashboard = false, view }: OverviewChartProps) {
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery('');
 
@@ -182,3 +180,5 @@ export default function OverviewChart({
     </S.Container>
   );
 }
+// eslint-disable-next-line react-refresh/only-export-components
+export default React.memo(OverviewChart);
