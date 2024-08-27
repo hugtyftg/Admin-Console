@@ -1,9 +1,9 @@
-import { S } from './style';
+import { S } from './style.ts';
 import { useTheme } from '@mui/material';
-import { VIEW } from '@/pages/overview/components/OverviewChart/types';
 import { Select } from 'tdesign-react';
 import { useState } from 'react';
 import { OverviewChart } from './components';
+import { VIEW } from './components';
 
 const options = [
   {

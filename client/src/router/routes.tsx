@@ -30,31 +30,31 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   {
     path: RoutePath.DASHBOARD,
-    element: lazyLoad('../pages/dashboard'),
+    element: lazyLoad('../pages/Dashboard'),
   },
   {
     path: RoutePath.PRODUCTS,
-    element: lazyLoad('../pages/products'),
+    element: lazyLoad('../pages/Products'),
   },
   {
     path: RoutePath.CUSTOMERS,
-    element: lazyLoad('../pages/customers'),
+    element: lazyLoad('../pages/Customers'),
   },
   {
     path: RoutePath.TRANSACTIONS,
-    element: lazyLoad('../pages/transactions'),
+    element: lazyLoad('../pages/Transactions'),
   },
   {
     path: RoutePath.GEOGRAPHY,
-    element: lazyLoad('../pages/geography'),
+    element: lazyLoad('../pages/Geography'),
   },
   {
     path: RoutePath.OVERVIEW,
-    element: lazyLoad('../pages/overview'),
+    element: lazyLoad('../pages/Overview'),
   },
   {
     path: RoutePath.DAILY,
-    element: lazyLoad('../pages/daily'),
+    element: lazyLoad('../pages/Daily'),
   },
   {
     path: RoutePath.ROOT,

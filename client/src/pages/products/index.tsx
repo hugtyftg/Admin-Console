@@ -1,8 +1,8 @@
 import { Header } from '@/layout/Header';
 import { useGetProductsQuery } from '@/store/api';
-import { S } from './style';
+import { S } from './style.ts';
 import { IProduct } from '@/types/IProduct';
-import { Product } from './Product';
+import { Product } from './Product/index';
 import { useMediaQuery } from '@mui/material';
 import { useEffect } from 'react';
 import { Loading } from 'tdesign-react';
