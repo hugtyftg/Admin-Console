@@ -8,6 +8,7 @@ import { Navbar } from '@/layout/Navbar';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useGetUserQuery } from '@/store/api';
+import { User } from '@/model/User';
 
 export default function Layout() {
   const element = useRoutes(routes);
