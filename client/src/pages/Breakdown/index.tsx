@@ -10,8 +10,8 @@ export default function Daily() {
 
   return (
     <S.Container theme={theme}>
-      <S.Title>DAILY</S.Title>
-      <S.SubTitle>Chart of daily sales and units</S.SubTitle>
+      <S.Title>BREAKDOWN</S.Title>
+      <S.SubTitle>Chart of sales category distribution</S.SubTitle>
       {!isLoading && data ? (
         <S.Graph theme={theme}>
           <BreakdownChart data={data} />
