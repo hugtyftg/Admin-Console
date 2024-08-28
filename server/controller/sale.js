@@ -5,7 +5,7 @@ export const getSales = async (req, res) => {
     const overallStats = await OverallStat.find();
     res.status(200).json(overallStats[0]);
   } catch (error) {
-    res.status(400).json({
+    res.status(404).json({
       code: -1,
       message: error.message,
     });
