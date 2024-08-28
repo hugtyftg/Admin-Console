@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const AffiliateSchema = new mongoose.Schema(
+const AffiliateStatSchema = new mongoose.Schema(
   {
     // 和用户一对一
     userId: { type: mongoose.Types.ObjectId, ref: 'User' },
@@ -10,8 +10,10 @@ const AffiliateSchema = new mongoose.Schema(
       ref: 'Transaction',
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
-export const Affiliate = mongoose.model('Affiliate', AffiliateSchema);
+
+export const AffiliateStat = mongoose.model(
+  'AffiliateStat',
+  AffiliateStatSchema
+);

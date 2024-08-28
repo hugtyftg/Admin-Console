@@ -14,7 +14,7 @@ import { Product } from './models/Product.js';
 import { ProductStat } from './models/ProductStat.js';
 import { Transaction } from './models/Transaction.js';
 import { OverallStat } from './models/OverallStat.js';
-import { Affiliate } from './models/AffiliateStat.js';
+import { AffiliateStat } from './models/AffiliateStat.js';
 import {
   dataUser,
   dataProduct,
@@ -51,7 +51,7 @@ mongoose
     });
 
     /* 仅在初始时添加数据;User是一个collection */
-    // Affiliate.insertMany(dataAffiliateStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
     // OverallStat.insertMany(dataOverallStat);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
