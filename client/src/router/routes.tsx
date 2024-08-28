@@ -12,6 +12,7 @@ enum RoutePath {
   MONTHLY = '/monthly',
   BREAKDOWN = '/breakdown',
   ADMIN = '/admin',
+  PERFORMANCE = '/performance',
   ROOT = '/',
 }
 
@@ -70,6 +71,10 @@ const routes: RouteConfig[] = [
   {
     path: RoutePath.ADMIN,
     element: lazyLoad('../pages/Admin'),
+  },
+  {
+    path: RoutePath.PERFORMANCE,
+    element: lazyLoad('../pages/Performance'),
   },
   {
     path: RoutePath.ROOT,
