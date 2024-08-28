@@ -13,6 +13,7 @@ import {
   SettingsOutlined,
 } from '@mui/icons-material';
 import DropList from './components/DropList';
+import { User } from '@/model/User';
 
 type NavbarPropType = {
   isSidebarOpen: boolean;

@@ -21,6 +21,7 @@ export const api = createApi({
     'Geography',
     'Sales',
     'Admins',
+    'Performance',
   ],
   // endpoints代表对该服务器的操作和请求
   endpoints: (builder) => ({
@@ -68,6 +69,11 @@ export const api = createApi({
       query: () => 'management/admins',
       providesTags: ['Admins'],
     }),
+    // 每个user的transaction
+    getPerformance: builder.query({
+      query: (id: string) => `management/performance/${id}`,
+      providesTags: ['Performance'],
+    }),
   }),
 });
 
@@ -81,4 +87,5 @@ export const {
   useGetGeographyQuery,
   useGetSalesQuery,
   useGetAdminsQuery,
+  useGetPerformanceQuery,
 } = api;
