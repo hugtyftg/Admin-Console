@@ -36,7 +36,6 @@ function MonthlyChart({ data }: MonthlyChartProps) {
     }
     return res;
   }, [data]);
-  console.log(data, total);
 
   return (
     <S.Container theme={theme}>
