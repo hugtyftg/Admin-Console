@@ -32,39 +32,43 @@ export const S = {
     margin-bottom: 15px;
   `,
   Main: styled.div`
-    background-color: #fff;
-    height: 75vh;
-    border: 1px solid #000;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
   `,
   Top: styled.div`
-    flex: 2;
+    flex: 4;
     display: flex;
     justify-content: space-between;
     column-gap: 10px;
   `,
   TopCards: styled.div`
-    flex: 1;
-    border: 1px solid #000;
-  `,
-  TopLineChart: styled.div`
     flex: 2;
-    border: 1px solid #000;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  `,
+  TopLineChart: styled.div<{ theme: any }>`
+    flex: 3;
+    background: ${(props) => props.theme.palette.background.alt};
+    border-radius: 5px;
   `,
   Bottom: styled.div`
-    flex: 3;
+    flex: 5;
     display: flex;
     justify-content: space-between;
     column-gap: 10px;
   `,
-  BottomTable: styled.div`
+  BottomTable: styled.div<{ theme: any }>`
     flex: 2;
-    border: 1px solid #000;
+    border-radius: 5px;
+    background: ${(props) => props.theme.palette.background.alt};
   `,
-  BottomPieChart: styled.div`
+  BottomPieChart: styled.div<{ theme: any }>`
     flex: 1;
-    border: 1px solid #000;
+    border-radius: 5px;
+    background: ${(props) => props.theme.palette.background.alt};
   `,
 };

@@ -7,6 +7,7 @@ import { IconButton, useTheme } from '@mui/material';
 import S from './style';
 import { Divider, UserInfo } from '@/components';
 import { SettingsOutlined } from '@mui/icons-material';
+import { User } from '@/model/User';
 
 type SidebarPropType = {
   user: User;
