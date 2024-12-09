@@ -32,12 +32,14 @@ export const S = {
     margin-bottom: 15px;
   `,
   Main: styled.div`
-    height: 80vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
   `,
   Top: styled.div`
+    /* 解决flex-item被内容撑开的问题 */
+    height: 0;
     flex: 4;
     display: flex;
     justify-content: space-between;
@@ -56,6 +58,8 @@ export const S = {
     border-radius: 5px;
   `,
   Bottom: styled.div`
+    /* 解决flex-item被内容撑开的问题 */
+    height: 0;
     flex: 5;
     display: flex;
     justify-content: space-between;
