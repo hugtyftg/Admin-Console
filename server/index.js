@@ -27,12 +27,17 @@ import {
 /* configuration */
 dotenv.config(); // 将.env敏感信息注入到环境中、能被process.env访问
 const app = express();
+// 支持接口返回json数据
 app.use(express.json());
+// 用于增强 Express.js 应用程序的安全性的中间件。它通过设置适当的 HTTP 标头来提供各种安全功能，例如防止跨站点脚本攻击（XSS）、点击劫持（clickjacking）等
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
+//  HTTP 请求日志记录器中间件。它会记录每个请求的详细信息，例如请求方法、URL、响应状态码等
 app.use(morgan('common'));
+// 用于解析 HTTP 请求体中的数据，例如表单数据、JSON 数据等，简化了从请求中提取数据的过程
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// 支持跨域
 app.use(cors());
 
 /* route */
