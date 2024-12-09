@@ -17,7 +17,9 @@ enum RoutePath {
 }
 
 const lazyLoad = (path: string) => {
-  const Component = lazy(() => import(path));
+  // vite中动态引入资源
+  // https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
+  const Component = lazy(() => import(`../pages/${path}/index.tsx`));
   return (
     <Suspense fallback={<h3>Loading...</h3>}>
       <Component />
@@ -34,47 +36,47 @@ interface RouteConfig {
 const routes: RouteConfig[] = [
   {
     path: RoutePath.DASHBOARD,
-    element: lazyLoad('../pages/Dashboard'),
+    element: lazyLoad('Dashboard'),
   },
   {
     path: RoutePath.PRODUCTS,
-    element: lazyLoad('../pages/Products'),
+    element: lazyLoad('Products'),
   },
   {
     path: RoutePath.CUSTOMERS,
-    element: lazyLoad('../pages/Customers'),
+    element: lazyLoad('Customers'),
   },
   {
     path: RoutePath.TRANSACTIONS,
-    element: lazyLoad('../pages/Transactions'),
+    element: lazyLoad('Transactions'),
   },
   {
     path: RoutePath.GEOGRAPHY,
-    element: lazyLoad('../pages/Geography'),
+    element: lazyLoad('Geography'),
   },
   {
     path: RoutePath.OVERVIEW,
-    element: lazyLoad('../pages/Overview'),
+    element: lazyLoad('Overview'),
   },
   {
     path: RoutePath.DAILY,
-    element: lazyLoad('../pages/Daily'),
+    element: lazyLoad('Daily'),
   },
   {
     path: RoutePath.MONTHLY,
-    element: lazyLoad('../pages/Monthly'),
+    element: lazyLoad('Monthly'),
   },
   {
     path: RoutePath.BREAKDOWN,
-    element: lazyLoad('../pages/Breakdown'),
+    element: lazyLoad('Breakdown'),
   },
   {
     path: RoutePath.ADMIN,
-    element: lazyLoad('../pages/Admin'),
+    element: lazyLoad('Admin'),
   },
   {
     path: RoutePath.PERFORMANCE,
-    element: lazyLoad('../pages/Performance'),
+    element: lazyLoad('Performance'),
   },
   {
     path: RoutePath.ROOT,
