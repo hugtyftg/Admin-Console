@@ -6,7 +6,7 @@ const S = {
     width?: number;
     height: number;
   }>`
-    width: ${(props) => props.width + 'px' ?? '100%'};
+    width: ${(props) => (props.width ? props.width + 'px' : '100%')};
     height: ${(props) => props.height}px;
     padding: 0 ${(props) => props.padding}px;
   `,
