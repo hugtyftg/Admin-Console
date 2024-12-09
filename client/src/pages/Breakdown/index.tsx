@@ -4,7 +4,7 @@ import { S } from './style';
 import { Loading } from 'tdesign-react';
 import BreakdownChart from './BreakdownChart';
 
-export default function Daily() {
+export default function Breakdown() {
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery('');
 

@@ -66,6 +66,7 @@ export const S = {
     column-gap: 10px;
   `,
   BottomTable: styled.div<{ theme: any }>`
+    overflow: auto;
     flex: 2;
     border-radius: 5px;
     background: ${(props) => props.theme.palette.background.alt};

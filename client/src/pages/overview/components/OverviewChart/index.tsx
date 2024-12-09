@@ -9,17 +9,27 @@ import { VIEW } from './types';
 type OverviewChartProps = {
   isDashboard?: boolean;
   view: VIEW;
+  outsideData: any;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-function OverviewChart({ isDashboard = false, view }: OverviewChartProps) {
+function OverviewChart({
+  isDashboard = false,
+  view,
+  outsideData,
+}: OverviewChartProps) {
   const theme = useTheme();
   const { data, isLoading } = useGetSalesQuery('');
 
   // 累计销量
   const [totalSalesLine, totalUnitsLine] = useMemo(() => {
-    if (!data) return [];
-    const { monthlyData } = data;
+    if (!data && !outsideData) return [];
+    let monthlyData;
+    if (outsideData) {
+      monthlyData = outsideData.monthlyData;
+    } else {
+      monthlyData = data.monthlyData;
+    }
     const totalSalesLine = {
       id: 'totalSales',
       color: theme.palette.secondary.main,
@@ -47,7 +57,7 @@ function OverviewChart({ isDashboard = false, view }: OverviewChartProps) {
       });
     }
     return [[totalSalesLine], [totalUnitsLine]];
-  }, [data, theme]);
+  }, [data, theme, outsideData]);
 
   return (
     <S.Container theme={theme}>

@@ -7,37 +7,46 @@ import {
   PinIcon,
   MapConnectionIcon,
 } from 'tdesign-icons-react';
+import { OverviewChart, VIEW } from '../Overview/components';
+import BreakdownChart from '../Breakdown/BreakdownChart';
+import { useGetDashboardQuery } from '@/store/api';
+import { Loading } from 'tdesign-react';
+import { useMemo } from 'react';
+import Transactions from '../Transactions';
 
-// type DashboardPropType = {};
 export default function Dashboard() {
   const theme = useTheme();
 
-  const cardData = [
-    {
-      title: 'Total Customers',
-      icon: <DashboardIcon />,
-      number: 5251,
-      percentage: '+5%',
-    },
-    {
-      title: 'Sales Today',
-      icon: <CallIcon />,
-      number: 5251,
-      percentage: '+5%',
-    },
-    {
-      title: 'Monthly Sales',
-      icon: <PinIcon />,
-      number: 5251,
-      percentage: '+5%',
-    },
-    {
-      title: 'Yearly Sales',
-      icon: <MapConnectionIcon />,
-      number: 5251,
-      percentage: '+5%',
-    },
-  ];
+  const { data, isLoading } = useGetDashboardQuery('');
+
+  const cardData = useMemo(() => {
+    return [
+      {
+        title: 'Total Customers',
+        icon: <DashboardIcon />,
+        number: isLoading ? '' : data.totalCustomers,
+        percentage: '+5%',
+      },
+      {
+        title: 'Sales Today',
+        icon: <CallIcon />,
+        number: isLoading ? '' : data.curDateStat.totalSales,
+        percentage: '+5%',
+      },
+      {
+        title: 'Monthly Sales',
+        icon: <PinIcon />,
+        number: isLoading ? '' : data.curMonthStat.totalSales,
+        percentage: '+5%',
+      },
+      {
+        title: 'Yearly Sales',
+        icon: <MapConnectionIcon />,
+        number: isLoading ? '' : data.yearlySalesTotal,
+        percentage: '+5%',
+      },
+    ];
+  }, [data, isLoading]);
   return (
     <S.Container theme={theme}>
       <S.Title>DASHBOARD</S.Title>
@@ -49,11 +58,36 @@ export default function Dashboard() {
               <Card key={item.title} {...item} />
             ))}
           </S.TopCards>
-          <S.TopLineChart theme={theme}></S.TopLineChart>
+          <S.TopLineChart theme={theme}>
+            <OverviewChart
+              isDashboard={true}
+              view={VIEW.SALES}
+              outsideData={data}
+            />
+          </S.TopLineChart>
         </S.Top>
         <S.Bottom>
-          <S.BottomTable theme={theme}></S.BottomTable>
-          <S.BottomPieChart theme={theme}></S.BottomPieChart>
+          <S.BottomTable theme={theme}>
+            <Transactions
+              showTitle={false}
+              defaultPageSize={5}
+              outsideData={data}
+            />
+          </S.BottomTable>
+          <S.BottomPieChart theme={theme}>
+            {!isLoading && data ? (
+              <BreakdownChart data={data} />
+            ) : (
+              <Loading
+                text="Loading..."
+                indicator
+                loading
+                preventScrollThrough
+                showOverlay
+                size="large"
+              />
+            )}
+          </S.BottomPieChart>
         </S.Bottom>
       </S.Main>
     </S.Container>

@@ -1,4 +1,5 @@
 import { UserInfo } from '@/components';
+import { User } from '@/model/User';
 import { Icon } from 'tdesign-icons-react';
 
 type DropListPropsType = {

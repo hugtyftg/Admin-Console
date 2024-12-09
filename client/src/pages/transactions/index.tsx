@@ -8,11 +8,19 @@ import {
 import { PrimaryTableCol, Table } from 'tdesign-react';
 
 // type DashboardPropType = {};
-export default function Transactions() {
+export default function Transactions({
+  showTitle = true,
+  defaultPageSize = 10,
+  outsideData,
+}: {
+  showTitle: boolean;
+  defaultPageSize: number;
+  outsideData?: any;
+}) {
   const theme = useTheme();
   // 分页查询
   const [page, setPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(20);
+  const [pageSize, setPageSize] = useState<number>(defaultPageSize);
   const [sort, setSort] = useState([{ sortBy: '_id', descending: false }]);
   // sort string format: {"field": "userId", "sort": "asc"}
   const [search] = useState<string>('');
@@ -70,15 +78,19 @@ export default function Transactions() {
     },
   ];
   useEffect(() => {
-    !isLoading && setTableData(data.transactions);
-  }, [data, isLoading]);
+    if (outsideData) {
+      setTableData(outsideData.transactions);
+    } else {
+      !isLoading && setTableData(data.transactions);
+    }
+  }, [data, isLoading, outsideData]);
   useEffect(() => {
     !isTotalLading && total && setTotalNum(total.total);
   }, [total, isTotalLading]);
 
   return (
     <S.Container theme={theme}>
-      <S.Title>Transactions</S.Title>
+      {showTitle && <S.Title>Transactions</S.Title>}
       {!isLoading && (
         <Table
           columns={columns}
