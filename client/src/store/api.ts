@@ -22,6 +22,7 @@ export const api = createApi({
     'Sales',
     'Admins',
     'Performance',
+    'Dashboard',
   ],
   // endpoints代表对该服务器的操作和请求
   endpoints: (builder) => ({
@@ -73,6 +74,10 @@ export const api = createApi({
     getPerformance: builder.query({
       query: (id: string) => `management/performance/${id}`,
       providesTags: ['Performance'],
+    }),
+    getDashboard: builder.query({
+      query: () => 'general/dashboard',
+      providesTags: ['Dashboard'],
     }),
   }),
 });
