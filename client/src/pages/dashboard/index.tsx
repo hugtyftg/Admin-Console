@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { S } from './style';
 import Card from './components/Card';
 import {
@@ -18,7 +18,7 @@ export default function Dashboard() {
   const theme = useTheme();
 
   const { data, isLoading } = useGetDashboardQuery('');
-
+  const isNonMobile = useMediaQuery('(min-width: 1000px)');
   const cardData = useMemo(() => {
     return [
       {
@@ -51,44 +51,40 @@ export default function Dashboard() {
     <S.Container theme={theme}>
       <S.Title>DASHBOARD</S.Title>
       <S.SubTitle>Welcome to your data dashboard</S.SubTitle>
-      <S.Main>
-        <S.Top>
-          <S.TopCards>
-            {cardData.map((item) => (
-              <Card key={item.title} {...item} />
-            ))}
-          </S.TopCards>
-          <S.TopLineChart theme={theme}>
-            <OverviewChart
-              isDashboard={true}
-              view={VIEW.SALES}
-              outsideData={data}
+      <S.Main isNonMobile={isNonMobile}>
+        <S.TopCards>
+          {cardData.map((item) => (
+            <Card key={item.title} {...item} />
+          ))}
+        </S.TopCards>
+        <S.TopLineChart theme={theme} isNonMobile={isNonMobile}>
+          <OverviewChart
+            isDashboard={true}
+            view={VIEW.SALES}
+            outsideData={data}
+          />
+        </S.TopLineChart>
+        <S.BottomTable theme={theme} isNonMobile={isNonMobile}>
+          <Transactions
+            showTitle={false}
+            defaultPageSize={5}
+            outsideData={data}
+          />
+        </S.BottomTable>
+        <S.BottomPieChart theme={theme} isNonMobile={isNonMobile}>
+          {!isLoading && data ? (
+            <BreakdownChart data={data} />
+          ) : (
+            <Loading
+              text="Loading..."
+              indicator
+              loading
+              preventScrollThrough
+              showOverlay
+              size="large"
             />
-          </S.TopLineChart>
-        </S.Top>
-        <S.Bottom>
-          <S.BottomTable theme={theme}>
-            <Transactions
-              showTitle={false}
-              defaultPageSize={5}
-              outsideData={data}
-            />
-          </S.BottomTable>
-          <S.BottomPieChart theme={theme}>
-            {!isLoading && data ? (
-              <BreakdownChart data={data} />
-            ) : (
-              <Loading
-                text="Loading..."
-                indicator
-                loading
-                preventScrollThrough
-                showOverlay
-                size="large"
-              />
-            )}
-          </S.BottomPieChart>
-        </S.Bottom>
+          )}
+        </S.BottomPieChart>
       </S.Main>
     </S.Container>
   );

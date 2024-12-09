@@ -4,7 +4,6 @@ import { S } from './style.ts';
 import { IProduct } from '@/types/IProduct';
 import { Product } from './Product/index';
 import { useMediaQuery } from '@mui/material';
-import { useEffect } from 'react';
 import { Loading } from 'tdesign-react';
 
 // type ProductsPropsType = {};
@@ -12,9 +11,7 @@ export default function Products() {
   const { data, isLoading } = useGetProductsQuery('');
 
   const isNonMobile = useMediaQuery('(min-width: 1000px)');
-  useEffect(() => {
-    console.log(isNonMobile);
-  }, [isNonMobile]);
+
   return (
     <S.Container>
       <S.HeaderWrapper>

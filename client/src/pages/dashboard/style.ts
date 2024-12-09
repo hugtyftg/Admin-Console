@@ -31,48 +31,49 @@ export const S = {
     font-size: 16px;
     margin-bottom: 15px;
   `,
-  Main: styled.div`
+  Main: styled.div<{ isNonMobile: boolean }>`
     height: 85vh;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
-  `,
-  Top: styled.div`
-    /* 解决flex-item被内容撑开的问题 */
-    height: 0;
-    flex: 4;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    grid-gap: 10px;
+    > div {
+      grid-column: ${(props) => (props.isNonMobile ? undefined : '1 / span4')};
+    }
   `,
   TopCards: styled.div`
-    flex: 2;
+    min-height: 0;
+    min-width: 0;
+    grid-row: 1;
+    grid-column: 1;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   `,
-  TopLineChart: styled.div<{ theme: any }>`
-    flex: 3;
+  TopLineChart: styled.div<{ theme: any; isNonMobile: boolean }>`
+    min-height: 0;
+    min-width: 0;
+    grid-row: ${(props) => (props.isNonMobile ? 1 : 2)};
+    grid-column: 2 / span 3;
+
     background: ${(props) => props.theme.palette.background.alt};
     border-radius: 5px;
   `,
-  Bottom: styled.div`
-    /* 解决flex-item被内容撑开的问题 */
-    height: 0;
-    flex: 5;
-    display: flex;
-    justify-content: space-between;
-    column-gap: 10px;
-  `,
-  BottomTable: styled.div<{ theme: any }>`
+  BottomTable: styled.div<{ theme: any; isNonMobile: boolean }>`
+    min-height: 0;
+    min-width: 0;
+    grid-row: ${(props) => (props.isNonMobile ? 2 : 3)};
+    grid-column: 1 / span 2;
     overflow: auto;
-    flex: 2;
     border-radius: 5px;
     background: ${(props) => props.theme.palette.background.alt};
+    padding: 15px;
   `,
-  BottomPieChart: styled.div<{ theme: any }>`
-    flex: 1;
+  BottomPieChart: styled.div<{ theme: any; isNonMobile: boolean }>`
+    min-height: 0;
+    min-width: 0;
+    grid-row: ${(props) => (props.isNonMobile ? 2 : 4)};
+    grid-column: 3;
     border-radius: 5px;
     background: ${(props) => props.theme.palette.background.alt};
   `,
