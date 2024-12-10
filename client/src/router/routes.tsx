@@ -80,7 +80,7 @@ const routes: RouteConfig[] = [
   },
   {
     path: RoutePath.ROOT,
-    element: <Navigate to={RoutePath.PRODUCTS} />,
+    element: <Navigate to={RoutePath.DASHBOARD} />,
   },
 ];
 
