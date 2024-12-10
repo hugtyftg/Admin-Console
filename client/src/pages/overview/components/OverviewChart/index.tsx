@@ -9,7 +9,7 @@ import { VIEW } from './types';
 type OverviewChartProps = {
   isDashboard?: boolean;
   view: VIEW;
-  outsideData: any;
+  outsideData?: any;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
