@@ -1,6 +1,6 @@
 import { useGetSalesQuery } from '@/store/api';
 import { useTheme } from '@mui/material';
-import { S } from './style';
+import { OverviewChartS } from './style';
 import { Loading } from 'tdesign-react';
 import { ResponsiveLine } from '@nivo/line';
 import React, { useMemo } from 'react';
@@ -60,7 +60,7 @@ function OverviewChart({
   }, [data, theme, outsideData]);
 
   return (
-    <S.Container theme={theme}>
+    <OverviewChartS.Container theme={theme}>
       {!isLoading && data ? (
         <ResponsiveLine
           data={
@@ -187,7 +187,7 @@ function OverviewChart({
           size="large"
         />
       )}
-    </S.Container>
+    </OverviewChartS.Container>
   );
 }
 // eslint-disable-next-line react-refresh/only-export-components

@@ -29,3 +29,9 @@ export const S = {
     border-radius: 4px;
   `,
 };
+
+export const OverviewChartS = {
+  Container: styled.div<{ theme: any }>`
+    height: 100%;
+  `,
+};
