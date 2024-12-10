@@ -2,6 +2,7 @@ import { useTheme } from '@mui/material';
 import Avatar from '../Avatar';
 import S from './style';
 import React from 'react';
+import { User } from '@/model/User';
 
 type UserInfoPropsType = {
   user: User;

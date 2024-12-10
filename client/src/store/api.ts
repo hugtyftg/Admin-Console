@@ -18,6 +18,11 @@ export const api = createApi({
     'Customers',
     'Transactions',
     'TransactionsTotal',
+    'Geography',
+    'Sales',
+    'Admins',
+    'Performance',
+    'Dashboard',
   ],
   // endpoints代表对该服务器的操作和请求
   endpoints: (builder) => ({
@@ -50,6 +55,30 @@ export const api = createApi({
       query: () => 'client/transactions/total',
       providesTags: ['TransactionsTotal'],
     }),
+    // 所有用户的地理位置分布
+    getGeography: builder.query({
+      query: () => 'client/geography',
+      providesTags: ['Geography'],
+    }),
+    // 销量趋势数据
+    getSales: builder.query({
+      query: () => 'sales/sales',
+      providesTags: ['Sales'],
+    }),
+    // 管理员表
+    getAdmins: builder.query({
+      query: () => 'management/admins',
+      providesTags: ['Admins'],
+    }),
+    // 每个user的transaction
+    getPerformance: builder.query({
+      query: (id: string) => `management/performance/${id}`,
+      providesTags: ['Performance'],
+    }),
+    getDashboard: builder.query({
+      query: () => 'general/dashboard',
+      providesTags: ['Dashboard'],
+    }),
   }),
 });
 
@@ -60,4 +89,9 @@ export const {
   useGetCustomersQuery,
   useGetTransactionsQuery,
   useGetTransactionsTotalNumQuery,
+  useGetGeographyQuery,
+  useGetSalesQuery,
+  useGetAdminsQuery,
+  useGetPerformanceQuery,
+  useGetDashboardQuery,
 } = api;

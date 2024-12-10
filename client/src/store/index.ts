@@ -5,7 +5,9 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 
 const store = configureStore({
   reducer: {
+    // 不通过网络请求获取的数据
     global: globalReducer,
+    // 通过网络请求获取的全局数据
     [api.reducerPath]: api.reducer,
   },
   /* todo */

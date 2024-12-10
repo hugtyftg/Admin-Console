@@ -3,11 +3,12 @@ import { useMediaQuery } from '@mui/material';
 import { useRoutes } from 'react-router-dom';
 import S from './style';
 import { useState } from 'react';
-import Sidebar from '@/components/Sidebar';
-import { Navbar } from '@/components/Navbar';
+import Sidebar from './Sidebar';
+import { Navbar } from '@/layout/Navbar';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useGetUserQuery } from '@/store/api';
+import { User } from '@/model/User';
 
 export default function Layout() {
   const element = useRoutes(routes);

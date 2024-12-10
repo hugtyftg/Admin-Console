@@ -4,7 +4,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { themeSettings } from './theme';
 import { RootState } from './store';
-import Layout from './pages/layout';
+import Layout from './layout';
 
 function App() {
   const mode = useSelector((state: RootState) => state.global.mode);
