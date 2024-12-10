@@ -4,7 +4,7 @@ import { OverviewChartS } from './style';
 import { Loading } from 'tdesign-react';
 import { ResponsiveLine } from '@nivo/line';
 import React, { useMemo } from 'react';
-import { VIEW } from './types';
+import { VIEW } from '@/types';
 
 type OverviewChartProps = {
   isDashboard?: boolean;
