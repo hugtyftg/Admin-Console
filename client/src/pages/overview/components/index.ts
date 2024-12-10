@@ -1,3 +1,3 @@
-import { VIEW } from './OverviewChart/types';
-export { default as OverviewChart } from './OverviewChart/index.tsx';
+import { VIEW } from './OverviewChart/types.ts';
+export { default as OverviewChart } from './OverviewChart';
 export { VIEW };
