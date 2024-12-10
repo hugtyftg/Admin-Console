@@ -11,9 +11,9 @@ import BreakdownChart from '../Breakdown/BreakdownChart';
 import { useGetDashboardQuery } from '@/store/api';
 import { Loading } from 'tdesign-react';
 import { useMemo } from 'react';
-import Transactions from '../Transactions/Transactions';
-import OverviewChart from '../Overview/OverviewChart';
-import { VIEW } from '../Overview/types';
+import Transactions from '../Transactions/Transactions.tsx';
+import OverviewChart from '../Overview/OverviewChart.tsx';
+import { VIEW } from '../Overview/types.ts';
 
 export default function Dashboard() {
   const theme = useTheme();
