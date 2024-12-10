@@ -7,12 +7,12 @@ import {
   PinIcon,
   MapConnectionIcon,
 } from 'tdesign-icons-react';
-import { OverviewChart, VIEW } from '../Overview/components';
+import { OverviewChart, VIEW } from '../Overview/components/index.ts';
 import BreakdownChart from '../Breakdown/BreakdownChart';
 import { useGetDashboardQuery } from '@/store/api';
 import { Loading } from 'tdesign-react';
 import { useMemo } from 'react';
-import Transactions from '../Transactions';
+import Transactions from '../Transactions/index.tsx';
 
 export default function Dashboard() {
   const theme = useTheme();
