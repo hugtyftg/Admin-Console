@@ -28,6 +28,6 @@
     /* emotions */
     "jsxImportSource": "@emotion/react"
   },
-  "include": ["src", "src/store/.ts"],
+  "include": ["src", "index.html"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
