@@ -5,6 +5,7 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
+    // vite解析路径别名
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
