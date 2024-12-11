@@ -12,7 +12,7 @@ import { useGetDashboardQuery } from '@/store/api';
 import { Loading } from 'tdesign-react';
 import { useMemo } from 'react';
 import { VIEW } from '@/types.ts';
-import Transactions from '@/pages/Transactions/Transactions.tsx';
+import Transactions from '@/pages/Transactions';
 import OverviewChart from '@/pages/Overview/OverviewChart.tsx';
 
 export default function Dashboard() {
