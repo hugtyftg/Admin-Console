@@ -20,7 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": ".",
+    // 基本路径
+    "baseUrl": "./",
+    // 路径别名
     "paths": {
       "@/*": ["src/*"]
     },
