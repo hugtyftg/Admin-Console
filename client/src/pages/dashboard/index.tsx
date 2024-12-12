@@ -12,8 +12,8 @@ import { useGetDashboardQuery } from '@/store/api';
 import { Loading } from 'tdesign-react';
 import { useMemo } from 'react';
 import { VIEW } from '@/types.ts';
-import OverviewChart from '@/Pages/Overview/OverviewChart';
-import Transactions from '@/Pages/Transactions';
+import OverviewChart from '../Overview/OverviewChart';
+import Transactions from '../Transactions/index';
 
 export default function Dashboard() {
   const theme = useTheme();
