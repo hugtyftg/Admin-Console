@@ -19,7 +19,7 @@ enum RoutePath {
 const lazyLoad = (path: string) => {
   // vite中动态引入资源
   // https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#limitations
-  const Component = lazy(() => import(`../pages/${path}/index.tsx`));
+  const Component = lazy(() => import(`../Pages/${path}/index.tsx`));
   return (
     <Suspense fallback={<h3>Loading...</h3>}>
       <Component />
