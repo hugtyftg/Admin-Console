@@ -20,6 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "forceConsistentCasingInFileNames": false,
+
     // 基本路径
     "baseUrl": ".",
     // 路径别名
